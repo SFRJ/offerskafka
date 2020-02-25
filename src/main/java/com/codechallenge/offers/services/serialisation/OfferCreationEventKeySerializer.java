@@ -1,16 +1,14 @@
 package com.codechallenge.offers.services.serialisation;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.apache.kafka.common.header.Headers;
 import org.apache.kafka.common.serialization.Serializer;
+import org.springframework.util.SerializationUtils;
 
 import java.util.Map;
 
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class OfferCreationEventKeySerializer implements Serializer {
-
-    private final ObjectMapper objectMapper;
 
     @Override
     public void configure(Map configs, boolean isKey) {
@@ -19,15 +17,7 @@ public class OfferCreationEventKeySerializer implements Serializer {
 
     @Override
     public byte[] serialize(String topic, Object data) {
-
-        byte[] result = null;
-        try {
-            result = objectMapper.writeValueAsString(data).getBytes();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return result;
+        return SerializationUtils.serialize(data);
     }
 
     @Override
