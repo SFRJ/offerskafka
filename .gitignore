@@ -1,0 +1,17 @@
+# Gradle
+**/build
+.gradle
+gradle/
+gradlew.bat
+gradlew
+
+# IDE/OS
+**/*.iml
+
+.idea/*
+!.idea/runConfigurations
+!.idea/dataSources.xml
+!.idea/checkstyle-idea.xml
+
+**/out/
+**/.DS_Store

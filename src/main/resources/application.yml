@@ -1,0 +1,21 @@
+kafka:
+  bootstrapAddress: localhost:9092
+  topics:
+    creation: creation
+
+#  consumer: offersvavr
+#  auto-offset-reset: earliest
+#  ssl:
+#    key-password: p455w0rd
+#    protocol: TLS
+#    keystore-location: file:/resources/ssl/kafka.keystore.jks
+#    keystore-password: p455w0rd
+#    keystore-type: JKS
+#    truststore-location: file:/resources/ssl/kafka.truststore.jks
+#    truststore-password: p455w0rd
+#    trust-store-type: JKS
+#  properties:
+#    sasl:
+#      mechanism: SCRAM-SHA-512
+#    security:
+#      protocol: SASL_SSL
