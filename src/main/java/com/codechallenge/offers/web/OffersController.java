@@ -13,6 +13,7 @@ public class OffersController {
     private final OfferCreationEventProducer eventProducer;
     private final OfferValidator offerValidator;
 
+    @Deprecated
     @RequestMapping(value = "/offers/kafka/create", consumes = "application/json", method = RequestMethod.POST)
     public ResponseEntity kafkaCreateOffer(@RequestBody CreateOfferRequest createOfferRequest) {
 

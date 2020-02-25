@@ -1,4 +1,7 @@
-This is the same app as the other one in my repositories, called offers but this one uses the VAVR framework(formerly javaslang)
+This is a demo. A microservice that uses spring-kafka
+At the moment there's an endpoint that will trigger the generation of an event
+but this endpoint will be removed once tested in integration. I just created the endpoint
+temporarily for manual testing purposes.
 
 To boot the app:
 ```
@@ -7,7 +10,7 @@ To boot the app:
 
 Sample Requests:
 ```
-curl --location --request POST 'http://localhost:8080/offers/create' \
+curl --location --request POST 'http://localhost:8080/offers/kafka/create' \
 --header 'Content-Type: application/json' \
 --data-raw '{
 	"description": "Offer Details",
@@ -16,10 +19,4 @@ curl --location --request POST 'http://localhost:8080/offers/create' \
 	"expiration": "2020-02-15"
 }'
 
-
-curl --location --request GET 'http://localhost:8080/offers/d8a73bfc-7aaa-4097-896c-ecb0ee25c441'
-
-
-
-curl --location --request GET 'http://localhost:8080/offers/d8a73bfc-7aaa-4097-896c-ecb0ee25c441/cancel'
 ```
