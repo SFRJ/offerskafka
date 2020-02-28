@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 import static com.codechallenge.offers.domain.OfferStatus.ACTIVE;
+import static java.lang.String.valueOf;
 
 @Slf4j
 @Service
@@ -26,8 +27,8 @@ public class OfferManagementService {
     @KafkaListener(topics = "${kafka.topics.creation}", groupId = "creation", containerFactory = "creationEventsListenerContainerFactory")
     public void listenGroupCreation(@Payload CreateOfferEvent event, @Headers MessageHeaders headers) {
 
-        log.info(headers.get("kafka_receivedMessageKey").toString());
-        log.info(event.toString());
+        log.info(valueOf(headers.get("kafka_receivedMessageKey")));
+        log.info(valueOf(event));
 
         offersRepository.createOffer(Offer.builder()
                 .identifier(UUID.randomUUID())
