@@ -3,6 +3,7 @@ package com.codechallenge.offers.services;
 import com.codechallenge.offers.config.kafka.events.CreateOfferEvent;
 import com.codechallenge.offers.config.kafka.events.CreateOfferKey;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
@@ -13,6 +14,7 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 import java.time.LocalDate;
 import java.util.UUID;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class OfferCreationEventProducer {
@@ -39,7 +41,7 @@ public class OfferCreationEventProducer {
 
             @Override
             public void onSuccess(SendResult<CreateOfferKey, CreateOfferEvent> result) {
-                System.out.println(String.format("Sent creation event ", result.getProducerRecord().value()));
+                log.info(String.format("Sent creation event with key %s", key.getOfferCreationKey()));
             }
         });
     }

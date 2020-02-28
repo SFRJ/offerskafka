@@ -14,6 +14,7 @@ import org.mockito.Mockito;
 import java.time.LocalDate;
 import java.util.UUID;
 
+import static com.codechallenge.offers.domain.OfferStatus.ACTIVE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OfferManagementServiceTest {
@@ -36,7 +37,14 @@ public class OfferManagementServiceTest {
 
         UUID someIdentifier = UUID.randomUUID();
         Mockito.when(offersRepository.createOffer(Mockito.any())).thenReturn(Try.of(() -> someIdentifier));
-        Try<UUID> offerId = offerManagementService.createOffer(null, 0D, null);
+
+        Try<UUID> offerId = offerManagementService.offersRepository.createOffer(Offer.builder()
+                .identifier(UUID.randomUUID())
+                .descriptions(null)
+                .price(0D)
+                .expirationDate(null)
+                .offerStatus(ACTIVE)
+                .build());
 
         Mockito.verify(offersRepository).createOffer(Mockito.any());
         assertThat(offerId.get()).isEqualTo(someIdentifier);
