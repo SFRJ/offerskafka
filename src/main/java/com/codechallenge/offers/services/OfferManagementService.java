@@ -33,8 +33,10 @@ public class OfferManagementService {
     }
 
     @KafkaListener(topics = "${kafka.topics.creation}", groupId = "creation", containerFactory = "creationEventsListenerContainerFactory")
-    public void listenGroupCreation(CreateOfferKey key, CreateOfferEvent event) {
-        System.out.println(String.format("Listener received event %s", key.getOfferCreationKey()));
+    public void listenGroupCreation(CreateOfferEvent event) {
+        System.out.println(String.format("Description %s", event.getDescription()));
+        System.out.println(String.format("Currency %s", event.getCurrency()));
+        System.out.println(String.format("Expiration %s", event.getExpiration()));
 
         createOffer(event.getDescription(), event.getPrice(), event.getExpiration());
     }
