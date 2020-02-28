@@ -44,3 +44,9 @@ Create topic
 cd /usr/bin
 kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test
 ```
+
+Check if topic exists
+```
+cd /usr/bin
+kafka-topics --list --bootstrap-server localhost:9092
+```
