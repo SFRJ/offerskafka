@@ -31,7 +31,7 @@ public class KafkaProducerConfig {
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, OfferCreationEventKeySerializer.class);
         configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, OfferCreationEventSerializer.class);
 
-        return new DefaultKafkaProducerFactory<>(configProps, () -> new OfferCreationEventKeySerializer(), () -> new OfferCreationEventSerializer());
+        return new DefaultKafkaProducerFactory<>(configProps);
     }
 
     @Bean
