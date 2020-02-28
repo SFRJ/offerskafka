@@ -20,3 +20,27 @@ curl --location --request POST 'http://localhost:8080/offers/kafka/create' \
 }'
 
 ```
+
+This app requires that Kafka and Zookeeper are running in a docker instance and also have a
+topic called "creation" to setup this prerequisites you need to follow this steps:
+
+Run the compose command and make sure Kafka is running
+```
+docker-compose up -d
+```
+
+Find the container id
+```
+docker-compose up -d
+```
+
+Log into docker container for Kafka
+```
+docker exec -it  <containerId> /bin/bash  
+```
+
+Create topic
+```
+cd /usr/bin
+kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test
+```
