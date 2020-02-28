@@ -1,7 +1,6 @@
 package com.codechallenge.offers.services;
 
 import com.codechallenge.offers.config.kafka.events.CreateOfferEvent;
-import com.codechallenge.offers.config.kafka.events.CreateOfferKey;
 import com.codechallenge.offers.domain.Offer;
 import com.codechallenge.offers.repositories.OffersRepository;
 import lombok.RequiredArgsConstructor;
